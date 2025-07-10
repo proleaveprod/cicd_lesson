@@ -17,7 +17,7 @@ async def get_index(request: Request):
         "current_page": page,
         "characters": characters.characters
     }
-    return templates.TemplateResponse(f'{page}.html', context)
+    return templates.TemplateResponse(context, f'{page}.html')
 
 
 # Обработчик страницы "О проекте"
