@@ -1,6 +1,6 @@
 name: Pylint
 
-on: [push] # На какое действие будет запускаться экшн
+on: [push, pull_request] # На какое действие будет запускаться экшн
 
 jobs: # Что должны сделать 
   build: # Название
@@ -10,15 +10,19 @@ jobs: # Что должны сделать
         python-version: ["3.13.3"] # Прикольная штука, можно сразу для нескольких версий запустить проверку
     steps: # Шаги того что делаем
     - uses: actions/checkout@v4 # Известные экшны. Они на маркетплейсе есть кто что делает и тд.
+
+    # Установка python
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+
+    # Установка зависимостей
     - name: Install dependencies
-    # Далее действия, которые в контейнере запустятся
       run: |
         python -m pip install --upgrade pip 
         pip install -r requirements.txt
+
     # Запуск pylint для всех .py файлов проекта
     - name: Analysing the code with pylint
       run: |
