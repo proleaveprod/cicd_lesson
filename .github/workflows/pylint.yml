@@ -18,7 +18,7 @@ jobs: # Что должны сделать
     # Далее действия, которые в контейнере запустятся
       run: |
         python -m pip install --upgrade pip 
-        pip install pylint
+        pip install -r requirements.txt
     # Запуск pylint для всех .py файлов проекта
     - name: Analysing the code with pylint
       run: |
