@@ -10,6 +10,3 @@ router.include_router(character_router)
          tags=['api'])
 async def get_characters():
     return characters.get_all()
-
-
-

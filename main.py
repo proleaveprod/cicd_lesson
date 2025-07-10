@@ -1,5 +1,8 @@
 import uvicorn
-from modules.common import FastAPI, Request, templates
+from fastapi import FastAPI
+from fastapi.requests import Request
+
+from modules.common import templates
 from modules.routers.api import router as api_router
 from modules.routers.view import router as view_router
 
